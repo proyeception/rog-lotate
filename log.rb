@@ -28,7 +28,7 @@ end
 
 def expire_logs(max, log_file, log_directory)
   keep, delete = Dir.entries(log_directory)
-    .filter do |f| f.start_with? "log." end
+    .select do |f| f.start_with? "log." end
     .map do |f| f.slice(4, f.size).to_i end
     .sort
     .split_at(max)
